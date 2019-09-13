@@ -5,18 +5,22 @@ Android sample project demonstrating choosing an image from gallery or camera wi
 
 uCrop
 Thanks to Yalantis for providing such a beautiful cropping (uCrop) library. This example uses the uCrop library for cropping functionality.
+
 How to Use
 Follow the below simple steps to add the library into your project.
-1.	Add file_provider.xml to your res -> xml foler.
+
+1.Add file_provider.xml to your res -> xml foler.
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
     <external-cache-path
         name="cache"
         path="camera" />
 </paths>
+
 2.	In AndroidManifext.xml, add CAMERA, DEXTER and STORAGE permissions. Add UCrop activity and FileProvider paths.
+
 3.	<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	<manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.app.imagepicker_cropping_kotlin">
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -59,18 +63,19 @@ Follow the below simple steps to add the library into your project.
                     android:resource="@xml/file_paths" />
         </provider>
     </application>
-
 </manifest>
+
 5.	Add Dexter and uCrop dependencies to your app/build.gradle
+
 dependencies {
-    //...
 		implementation 'com.github.yalantis:ucrop:2.2.3'
-implementation "com.karumi:dexter:5.0.0"
-
-
+		implementation "com.karumi:dexter:5.0.0"
 }
+
 6.	Copy ImagePickerActivity.kt to your project.
+
 7.	Launch ImagePickerActivity by passing required intent data. Once the image is cropped, you can received the path of the cropped image in onActivityResult method.
+
 8.	class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.java.simpleName
     val REQUEST_IMAGE = 100
@@ -219,7 +224,4 @@ implementation "com.karumi:dexter:5.0.0"
         imgProfile!!.setColorFilter(ContextCompat.getColor(this, android.R.color.transparent))
     }
 }
-
-
 Once the Uri is received, you can create a bitmap and send to your server or preview on the screen.
-.
